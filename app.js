@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 // const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
@@ -88,6 +89,7 @@ app.use(
 //   });
 // });
 
+app.use(compression());
 app.use('/', require('./routes/viewRoutes'));
 app.use('/api/v1/tours', require('./routes/tourRoutes'));
 app.use('/api/v1/users', require('./routes/userRoute'));
