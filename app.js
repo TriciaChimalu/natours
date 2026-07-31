@@ -10,6 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
@@ -28,7 +29,7 @@ app.set('query parser', 'extended');
 // app.set('query parser', 'extended');
 
 //Global middlewares
-
+app.use(cors());
 //set security http
 // app.use(helmet());
 
@@ -38,7 +39,6 @@ const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, //100 requests in 1hr
   message: 'Too many requests from this IP, please try again in an hour',
 });
-
 app.use('/api', limiter);
 
 //body parser, reading data from body into req.body
