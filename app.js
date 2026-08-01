@@ -14,6 +14,7 @@ const cors = require('cors');
 
 const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const bookingController = require('./controllers/bookingController');
 
 const app = express();
 
@@ -29,9 +30,12 @@ app.set('query parser', 'extended');
 // app.set('query parser', 'extended');
 
 //Global middlewares
-app.use(cors());
+app.use(cors()); //access-control-allow-origin
 //set security http
 // app.use(helmet());
+
+app.options('*', cors());
+// app.option('/api/v1/tours/:id',cors())
 
 //limit request from ame api
 const limiter = rateLimit({
@@ -41,6 +45,11 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
+app.post(
+  '/webhook-checkout',
+  express.raw({ type: 'application/json' }),
+  bookingController.webhookCheckout,
+);
 //body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' })); //limiting the amount of data that comes from the body
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
