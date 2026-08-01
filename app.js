@@ -34,7 +34,7 @@ app.use(cors()); //access-control-allow-origin
 //set security http
 // app.use(helmet());
 
-app.options('*', cors());
+app.options('*path', cors());
 // app.option('/api/v1/tours/:id',cors())
 
 //limit request from ame api
