@@ -108,7 +108,7 @@ app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
 
 //handling unhandled routes
-app.all('*path', (req, res, next) => {
+app.all('*', (req, res, next) => {
   //   res.status(404).json({
   //     status: 'fail',
   //     message: `Can't find ${req.originalUorl} on this server`,
