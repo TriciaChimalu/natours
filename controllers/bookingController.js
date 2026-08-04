@@ -68,7 +68,7 @@ exports.webhookCheckout = (req, res, next) => {
     event = stripe.webhooks.constructEvent(
       req.body,
       signature,
-      process.env.STRIKE_WEBHOOK_SECRET,
+      process.env.STRIPE_WEBHOOK_SECRET,
     );
   } catch (err) {
     return res.status(400).send(`Webhook error:${err.message}`);
@@ -76,7 +76,7 @@ exports.webhookCheckout = (req, res, next) => {
   if (event.type === 'checkout.session.completed')
     createBookingCheckout(event.data.object);
 
-  res.send(200).json({ received: true });
+  res.status(200).json({ received: true });
 };
 exports.createBooking = factory.createOne(Booking);
 exports.getAlBookings = factory.getAll(Booking);
