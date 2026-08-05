@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import '@babel/polyfill';
+// import '@babel/polyfill';
 import { updateSettings } from './updateSettings';
 import { login, logout } from './login';
 import { showAlert } from './alert';
