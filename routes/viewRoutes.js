@@ -3,8 +3,11 @@ const { protect } = require('./../controllers/authController');
 const viewController = require('./../controllers/viewController');
 const { isLoggedIn } = require('./../controllers/authController');
 const bookingController = require('./../controllers/bookingController');
-const router = express.Router();
 
+const viewsController = require('./../controllers/viewController');
+
+const router = express.Router();
+router.use(viewsController.alerts);
 router.use(isLoggedIn);
 router.get('/', isLoggedIn, viewController.getOverview);
 router.get('/tours/:slug', isLoggedIn, viewController.getTour);
