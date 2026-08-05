@@ -6,8 +6,6 @@ const dns = require('dns');
 dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 process.on('uncaughtException', (err) => {
-  console.log('UNCAUGHT EXCEPTION! Shutting down');
-  console.log(err);
   console.log(err.name, err.message);
 });
 

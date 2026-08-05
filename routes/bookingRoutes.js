@@ -1,9 +1,11 @@
 const express = require('express');
 const { protect, restrictTo } = require('./../controllers/authController');
 const bookingController = require('./../controllers/bookingController');
+const viewsController = require('./../controllers/viewController');
 
 const router = express.Router();
 
+router.use(viewsController.alerts);
 router.use(protect);
 router.get('/checkout-session/:tourId', bookingController.getCheckoutSession);
 
