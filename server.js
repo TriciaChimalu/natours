@@ -21,7 +21,6 @@ const DB = process.env.DATABASE.replace(
 mongoose
   .connect(DB) //it returns a promise
   .then((con) => {
-    console.log(con.connections);
     console.log('DB connections successful');
   });
 
