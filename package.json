@@ -9,6 +9,10 @@
     "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/dist",
     "build:js": "parcel build ./public/js/index.js --dist-dir ./public/dist"
   },
+  "browserslist": [
+    "> 0.25%",
+    "not dead"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
